@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+.menu {
+    background-color: #f0fd34e3;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    height: 7vh;
+    
+    
+}
+
+.menu img{
+    margin-left: 5px;
+}
+
+a{
+    color: #000000;
+    padding: 10px 30px;
+    display: flex;
+    text-decoration: none;
+    flex-direction: column;
+    align-items: flex-end;
+
+}
+    .credit {
+        background-color: #2c2c2ce3;
+        color: rgb(255, 255, 255);
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        height: 15vh;
+    }
+.credit a{
+    color: #ffffff;
+    padding: 10px 30px;
+    display: block;
+    text-decoration: none;
+}
+.info{
+   justify-content: center;
+}
+
+.container{
+    background-image: url("https://www.phoenixnext.com/pub/media/magefan_blog/many_dear.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 78vh ;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.objcontain{
+
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 2rem;
+    align-items: center;
+}
+ 
+.checkboxcontain{
+    display: flex; /* Use flexbox for layout */
+    align-items: center;
+    justify-content: center;
+   
+    
+}
+
+.checkboxcontain label{
+    margin-right: 20px;
+}
