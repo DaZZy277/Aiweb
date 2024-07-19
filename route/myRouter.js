@@ -9,7 +9,7 @@ router.get("/home",(req,res) =>{
 
 router.get("/user",(req,res) =>{
     res.render('User')
-    console.log("555")
+    // console.log("555")
 }) 
 
 
