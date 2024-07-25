@@ -2,6 +2,11 @@ const express = require('express')
 const app = express()
 const path = require('path')
 const router = require('./route/myRouter')
+const bodyParser = require('body-parser');
+
+//ส่งมาแบบ post
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.urlencoded({extended:false}))
 
 app.use(router)
 

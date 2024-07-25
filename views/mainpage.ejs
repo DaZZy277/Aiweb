@@ -33,33 +33,36 @@
     <div class = "background">
     
         <div class="container">   
-        
-            <div class = "objcontain 1">
-                <p>Enter your money</p>
-                <input type="number" id="money-input" name="money-input" placeholder="Enter money here...">
-            </div>  
-              
-            <div class = "checkboxcontain">
-                <label for="item1"><input type="checkbox" id="item1" name="item1">
-                    Ai Predict
-                </label>
-                <label for="item2">
-                <input type="checkbox" id="item2" name="item2">
-                    Manual
-                </label>
-
-            </div>
-            
-            <div class = "objcontain 2">
+            <form  method="post" class="fromData" action="/result">
+                <div class = "objcontain 1">
+                    <p>Enter your money</p>
+                    <input type="float" id="money-input" name="money_input" placeholder="Enter money here...">
+                </div>  
+                  
+                <div class = "checkboxcontain">
+                    <label for="item1">
+                    <input type="checkbox" id="item1" name="AiPredict">
+                        Ai Predict
+                    </label>
+                    <label for="item2">
+                    <input type="checkbox" id="item2" name="Manual">
+                        Manual
+                    </label>
+    
+                </div>
                 
-                <label for = "Percentage-input"><input type="float" id="Percentage-input" name="Percentage-input" placeholder="Enter percentage here..."> </label>
-                <div class="percent">%</div>
-            </div>
+                <div class = "objcontain 2">
+                    
+                    <label for = "Percentage-input"><input type="float" id="Percentage-input" name="Percentage_input_Manual" placeholder="Enter percentage here..."> </label>
+                    <div class="percent">%</div>
+                </div>
+                
+                <div class = "objcontain 3">
+                    <button type="submit" id = "submit button"> Submit </button>
+                </div>
+    
+            </form>
             
-            <div class = "objcontain 3">
-                <button id = "submit button"> Submit </button>
-            </div>
-
         </div>
     </div>
 </body>
@@ -78,4 +81,3 @@
 </div>
 
 </footer>
-<script src ="webscript.js"></script>
