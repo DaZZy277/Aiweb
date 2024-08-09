@@ -75,15 +75,17 @@
 }
 .background{
     width: 100%;
-}
-
-.container{
+    background-color: rgb(255, 255, 255);
     /* background-image: url("https://www.phoenixnext.com/pub/media/magefan_blog/many_dear.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover; */
-    background-color: chocolate;
+}
+
+.container{
+    
+    
     height: 78vh ;
     padding-top: 10px;
     padding-left: 10px;
@@ -95,6 +97,13 @@
     width: 100%;
     
 }
+
+/* .card-body,card-title,card-title{
+    width: 50%;
+} */
+ .card text-center {
+    width: 50%;
+ }
 
 .objcontain{
 
