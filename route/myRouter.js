@@ -23,9 +23,10 @@ router.post('/result',(req,res)=>{
             Percentage_input_Manual:req.body.Percentage_input_Manual
         }
     
-    // console.log(data.Manual)
+    // console.log(data.money_input+100)
 
     //คำนวนเงินเฟ้อแบบ manual
+
     if(data.Manual){
         
             // เปลี่ยนอัตราเงินเฟ้อประจำปีจากเปอร์เซ็นต์เป็นทศนิยม
@@ -33,7 +34,8 @@ router.post('/result',(req,res)=>{
             
                 
             // คำนวณค่าในอนาคต
-            let futureValue = data.money_input * Math.pow(1 + inflationRate, 3);
+            let futureValue = data.money_input * Math.pow(1 + inflationRate, data.year_input);
+            
             futureValue = parseFloat(futureValue.toFixed(2)) ;
             console.log(futureValue);
 
@@ -41,23 +43,19 @@ router.post('/result',(req,res)=>{
             {
                 resultMoney:futureValue,
                 resultPercentage:req.body.Percentage_input_Manual,
-                resultYear:req.body.year_input,
-                inputMoney:req.body.money_input
+                resultYear:req.body.year_input
             }
         ]
 
-        console.log(output[0].resultMoney)
+    // console.log(output.resultMoney)
 
-        //ส่งข้อมูล object ไปที่ result.ejs
+    //ส่งข้อมูล object ไปที่ result.ejs
         
-        res.render('result.ejs',{
-            output:output
-
-        })
+        res.render('result.ejs',{output:output})
         // res.redirect('mainpage')
 
     }else if(data.AiPredict){
-
+        res.render('ai')
     }
 
     
