@@ -13,6 +13,11 @@ router.get("/user",(req,res) =>{
     // console.log("555")
 }) 
 
+router.get("/login",(req,res) =>{
+    res.render('login')
+    // console.log("555")
+}) 
+
 router.post('/result',(req,res)=>{
 
     let data = {
