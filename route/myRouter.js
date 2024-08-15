@@ -18,6 +18,11 @@ router.get("/login",(req,res) =>{
     // console.log("555")
 }) 
 
+router.get("/archive",(req,res) =>{
+    res.render('archive')
+    // console.log("555")
+}) 
+
 router.post('/result',(req,res)=>{
 
     let data = {
