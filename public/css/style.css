@@ -36,6 +36,20 @@ table {
 
 }
 
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 70vw;
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even){background-color: #f2f2f2}
+
 .menu-container{
     display: grid;
     grid-template-columns: repeat(2,auto);
@@ -96,15 +110,17 @@ table {
 }
 .background{
     width: 100%;
-}
-
-.container{
+    background-color: rgb(255, 255, 255);
     /* background-image: url("https://www.phoenixnext.com/pub/media/magefan_blog/many_dear.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover; */
-    background-color: chocolate;
+}
+
+.container{
+    
+    
     height: 78vh ;
     padding-top: 10px;
     padding-left: 10px;
@@ -117,8 +133,25 @@ table {
     
 }
 
+/* .card-body,card-title,card-title{
+    width: 50%;
+} */
+ .card text-center {
+    width: 50%;
+ }
+
 .objcontain{
 
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 2rem;
+    align-items: center;
+}
+
+.objcontain4{
+    width: 80vw;
     padding: 10px;
     display: flex;
     flex-direction: column;

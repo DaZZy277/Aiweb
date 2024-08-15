@@ -18,6 +18,16 @@ router.get("/user",(req,res) =>{
     // console.log("555")
 }) 
 
+router.get("/login",(req,res) =>{
+    res.render('login')
+    // console.log("555")
+}) 
+
+router.get("/archive",(req,res) =>{
+    res.render('archive')
+    // console.log("555")
+}) 
+
 router.post('/result',(req,res)=>{
 
     let data = {
@@ -35,29 +45,38 @@ router.post('/result',(req,res)=>{
     if(data.Manual){
 
     
-    // เปลี่ยนอัตราเงินเฟ้อประจำปีจากเปอร์เซ็นต์เป็นทศนิยม
-    let inflationRate =  data.Percentage_input_Manual/100;
-    
-    // คำนวณค่าในอนาคต
-    let futureValue = data.money_input * Math.pow(1 + inflationRate, 20);
-
-    futureValue = futureValue.toFixed(2)
-    
-    
-    let output = [
-        {
-            resultMoney:futureValue,
-            resultPercentage:req.body.Percentage_input_Manual,
-            resultYear:req.body.year_input
-        }
-    ]
 
     // console.log(output.resultMoney)
 
     //ส่งข้อมูล object ไปที่ result.ejs
         
-    res.render('result.ejs',{output:output})
-    // res.redirect('mainpage')
+            // เปลี่ยนอัตราเงินเฟ้อประจำปีจากเปอร์เซ็นต์เป็นทศนิยม
+            let inflationRate = data.Percentage_input_Manual / 100;
+            
+                
+            // คำนวณค่าในอนาคต
+            let futureValue = data.money_input * Math.pow(1 + inflationRate, 3);
+            futureValue = parseFloat(futureValue.toFixed(2)) ;
+            console.log(futureValue);
+
+        let output = [
+            {
+                resultMoney:futureValue,
+                resultPercentage:req.body.Percentage_input_Manual,
+                resultYear:req.body.year_input,
+                inputMoney:req.body.money_input
+            }
+        ]
+
+        console.log(output[0].resultMoney)
+
+        //ส่งข้อมูล object ไปที่ result.ejs
+        
+        res.render('result.ejs',{
+            output:output
+
+        })
+        // res.redirect('mainpage')
 
     }else if(data.AiPredict){
         res.render('ai')

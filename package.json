@@ -1,6 +1,7 @@
 {
-  "name": "aiweb",
+  "name": "Aiweb",
   "version": "1.0.0",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -8,11 +9,9 @@
   },
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "alert": "^6.0.2",
     "axios": "^1.7.2",
-    "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
