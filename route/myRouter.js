@@ -1,10 +1,15 @@
 //Routing
 const express = require('express')
 const router = express.Router()
-const archiveModel = require('../models/modelArchive')
+
+
+
+//calling model
+const {archiveModel,loginRegisterModel} = require('../models/model')
+
 // const path = require('path')
 
-router.get("/home",(req,res) =>{
+router.get("/",(req,res) =>{
     res.render('mainpage')
 })
 
@@ -61,6 +66,59 @@ router.post('/result',(req,res)=>{
     
 
 
+    
+})
+
+//Login
+router.post("/login",(req,res) =>{
+    res.render('login')
+    
+}) 
+
+//checkRegister
+router.post("/checkRegister",(req,res)=>{
+
+    
+    //object เก็บข้อมูล register
+    let registerData = new loginRegisterModel({
+        email:req.body.email,
+        username:req.body.username,
+        password:req.body.password
+    })
+
+    //save regier data ลงใน DB
+    registerData.save().then(()=>{
+        res.render('User.ejs') 
+    }).catch((err)=> console.log(err))
+
+      
+})
+
+router.post("/checkLogin",(req,res)=>{
+
+    loginRegisterModel.findOne({ email: req.body.email, password: req.body.password }).then((doc)=>{
+        if (doc) {
+            // console.log('ถูก')
+            res.redirect('/Archive')
+        } else {
+            let invalid = [
+                {
+                    email:req.body.email,
+                    password:req.body.password
+                }
+            ]
+            res.render('invalid.ejs',{invalid:invalid})
+        }
+    }).catch((err)=>console.log(err))
+    
+      
+})
+
+
+// for Archive Page
+
+router.get("/Archive",(req,res) =>{
+    res.render('Archive.ejs')
     
 })
 
