@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>Doc</title>
+</header>
+
+<body>
+    <div class="menu" id="menu">
+        <div class="menu-container">
+            <div class="logo">
+                <img src="img/user-3296.png" class="logoImage"> 
+            </div>
+            <div class="rightNav">
+                <div class="rightNavContainer">
+                    <div class="username">
+                       <a href="/login" class="Ausername">Username</a>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+       
+    </div>
+    <div class = "background">
+    
+        <div class="container">   
+            <form  method="post" class="fromData" action="/result">
+                <div class = "objcontain 1">
+            
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" id="money-input" name="money_input" placeholder="Enter money here...">
+                    </div>
+                
+                </div>  
+                  
+                <div class = "checkboxcontain">
+                    <label for="item1">
+                    <input type="checkbox" id="item1" name="AiPredict">
+                        Ai Predict
+                    </label>
+                    <label for="item2">
+                    <input type="checkbox" id="item2" name="Manual">
+                        Manual
+                    </label>
+    
+                </div>
+                
+                <div class = "objcontain 2">
+                    
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" id="Percentage_input_Manual" name="Percentage_input_Manual" placeholder="Enter percentage here...">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-default">%</span>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class = "objcontain 3">
+                    <button type="submit" class="btn btn-success" id = "submit button">Submit</button>
+                </div>
+    
+            </form>
+            
+        </div>
+    </div>
+</body>
+
+<footer>
+<div class = "credit">
+    <div class="team-member">
+          
+        <div class="info">
+             <h3>disclaimer</h3>
+             <p>This website is make for grade and credit in AioT course only. 
+                For any question please contract Tel:0970833356  </p>
+         </div>
+
+     </div>
+</div>
+
+</footer>
