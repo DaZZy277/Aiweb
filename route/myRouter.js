@@ -109,10 +109,17 @@ router.post("/checkRegister",(req,res)=>{
         username:req.body.username,
         password:req.body.password
     })
-
+    // let number = [{
+    //     num1:1,
+    //     num2:2
+    // }]
+    console.log(req.body.email)
     //save regier data ลงใน DB
     registerData.save().then(()=>{
-        res.render('User.ejs') 
+        res.redirect('/Archive')
+        // res.render('archive',{
+        //     number:number
+        // })
     }).catch((err)=> console.log(err))
 
       
@@ -143,8 +150,10 @@ router.post("/checkLogin",(req,res)=>{
 // for Archive Page
 
 router.get("/Archive",(req,res) =>{
-    res.render('Archive.ejs')
     
+    
+
+    res.render('archive.ejs')
 })
 
 // 

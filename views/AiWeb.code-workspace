@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "AiWeb",
+			"path": ".."
+		},
+		{
+			"name": "node_modules",
+			"path": "../../../Documents/npmsetup/node_modules"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "AiWeb"
+	}
+}
