@@ -9,7 +9,7 @@ const {archiveModel,loginRegisterModel} = require('../models/model')
 
 // const path = require('path')
 
-router.get("/",(req,res) =>{
+router.get("/home",(req,res) =>{
     res.render('mainpage')
 })
 
@@ -39,7 +39,7 @@ router.post('/result',(req,res)=>{
             money_input:req.body.money_input,
             AiPredict:req.body.AiPredict,
             Manual:req.body.Manual,
-            year_input:req.body.year_input,
+            year_input:req.body.Year_input,
             Percentage_input_Manual:req.body.Percentage_input_Manual
         }
     
@@ -60,20 +60,24 @@ router.post('/result',(req,res)=>{
             
                 
             // คำนวณค่าในอนาคต
-            let futureValue = data.money_input * Math.pow(1 + inflationRate, 3);
+            let futureValue = data.money_input * Math.pow(1 + inflationRate, data.year_input);
             futureValue = parseFloat(futureValue.toFixed(2)) ;
+            
             console.log(futureValue);
+            console.log(data.year_input);
+            
 
         let output = [
             {
                 resultMoney:futureValue,
                 resultPercentage:req.body.Percentage_input_Manual,
-                resultYear:req.body.year_input,
+                resultYear:req.body.Year_input,
                 inputMoney:req.body.money_input
             }
         ]
 
         console.log(output[0].resultMoney)
+        console.log(output[0].resultYear)
 
         //ส่งข้อมูล object ไปที่ result.ejs
         
