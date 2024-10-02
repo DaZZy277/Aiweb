@@ -4,8 +4,10 @@ const router = express.Router()
 
 
 
+
 //calling model
 const {archiveModel,loginRegisterModel} = require('../models/model')
+const { render } = require('ejs')
 
 // const path = require('path')
 
@@ -18,15 +20,9 @@ router.get("/user",(req,res) =>{
     // console.log("555")
 }) 
 
-router.get("/login",(req,res) =>{
-    res.render('login')
-    // console.log("555")
-}) 
 
-router.get("/archive",(req,res) =>{
-    res.render('archive')
-    // console.log("555")
-}) 
+
+
 
 router.get("/navbar",(req,res) =>{
     res.render('navbar')
@@ -35,21 +31,25 @@ router.get("/navbar",(req,res) =>{
 
 router.post('/result',(req,res)=>{
 
+
     let data = {
             money_input:req.body.money_input,
-            AiPredict:req.body.AiPredict,
-            Manual:req.body.Manual,
+            option:req.body.option,
             year_input:req.body.Year_input,
             Percentage_input_Manual:req.body.Percentage_input_Manual
         }
     
+    console.log(data.option)
+
+    function getData_option(){
+        return data.option
+    }
+    global.GB_getData_option = getData_option
     // console.log(data.money_input+100)
 
     //คำนวนเงินเฟ้อแบบ manual
 
-    if(data.Manual){
-
-    
+    if(data.option==='Manual'){
 
     // console.log(output.resultMoney)
 
@@ -87,19 +87,39 @@ router.post('/result',(req,res)=>{
         })
         // res.redirect('mainpage')
 
-    }else if(data.AiPredict){
-        res.render('ai')
+    }else if(data.option==='Ai'){
+        console.log('hello im AI')
+        
     }
-
-    
-
-
-    
+ 
 })
 
 //Login
 router.post("/login",(req,res) =>{
-    res.render('login')
+
+    const currentDate = new Date()
+
+    //save หน้า result ลง archive collection database
+    let resultData = new archiveModel({
+        re_inputMoney:req.body.re_inputMoney,
+        re_resultYear:req.body.re_resultYear,
+        re_checkbox:GB_getData_option(),
+        re_resultMoney:req.body.re_resultMoney,
+        re_date:currentDate.toISOString().split('T')[0]
+    })
+
+    resultData.save().then(()=>{
+    }).catch((err)=> console.log(err))
+
+
+
+    //เช็คสถานะ login ของ user
+    const loggedIn = req.cookies.username;
+    if (loggedIn){
+        res.redirect('/Archive')
+    }else{
+        res.render('login')
+    }
     
 }) 
 
@@ -118,7 +138,12 @@ router.post("/checkRegister",(req,res)=>{
     //     num2:2
     // }]
     console.log(req.body.email)
-    //save regier data ลงใน DB
+
+    //save สถานะ login ด้วย cookie
+    res.cookie('loggedIn','true',{maxAge:3600000,httpOnly:true})
+    res.cookie('username', req.body.username, { maxAge: 3600000, httpOnly: true })
+
+    //save regier data ลงใน loginregister collection DB
     registerData.save().then(()=>{
         res.redirect('/Archive')
         // res.render('archive',{
@@ -131,9 +156,14 @@ router.post("/checkRegister",(req,res)=>{
 
 router.post("/checkLogin",(req,res)=>{
 
+    //check email ว่าเป็นของใคร?
+
     loginRegisterModel.findOne({ email: req.body.email, password: req.body.password }).then((doc)=>{
         if (doc) {
-            // console.log('ถูก')
+            //save สถานะ login ด้วย cookie
+            res.cookie('loggedIn','true',{maxAge:3600000,httpOnly:true})
+            res.cookie('username', doc.username, { maxAge: 3600000, httpOnly: true })
+            // console.log(doc.username)
             res.redirect('/Archive')
         } else {
             let invalid = [
@@ -155,9 +185,13 @@ router.post("/checkLogin",(req,res)=>{
 
 router.get("/Archive",(req,res) =>{
     
-    
 
-    res.render('archive.ejs')
+    //เรียกข้อมูล จาก archivemodel ไปที่ หน้า archive 
+    archiveModel.find().then(doc=>{
+        res.render('archive.ejs', {saves: doc})
+    }).catch((err)=>console.log(err))
+
+    
 })
 
 // 
