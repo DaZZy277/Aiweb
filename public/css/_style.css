@@ -143,7 +143,8 @@ header {
 
     .nav-bar {
         position: fixed;
-        top: 60px; /* Adjust this based on your header height */
+        top: 60px;
+        /* Adjust this based on your header height */
         right: -100%;
         width: 100%;
         height: calc(100% - 60px);
@@ -187,7 +188,8 @@ header {
 
     /* Adjust for content not to overlap with header */
     section {
-        margin-top: 80px; /* Adjust according to your header height */
+        margin-top: 80px;
+        /* Adjust according to your header height */
     }
 }
 
@@ -208,67 +210,77 @@ header {
     }
 }
 
-/* Dropdown styles */
+/* dropdown styles */
 .dropdown {
-    position: relative; /* Enable positioning context for absolute children */
+    position: relative;
+    /* Enable positioning context for absolute children */
 }
 
 .dropdown-menu {
     display: none;
-    position: absolute; /* Position absolute to align below the parent */
+    position: absolute;
+    /* Position absolute to align below the parent */
     background-color: #333;
-    padding: 10px 0; /* Add top/bottom padding */
-    top: 100%; /* Position it directly below the dropdown link */
-    left: 50%; /* Center align horizontally */
-    transform: translateX(-50%); /* Adjust to center */
-    min-width: 200px; /* Minimum width for dropdown */
-    max-width: 90vw; /* Prevent overflow on smaller screens */
-    z-index: 1000; /* Ensure dropdown is above other elements */
+    padding: 10px;
+    top: 100%;
+    /* Position it directly below the dropdown link */
+    left: 0;
+    /* Align with the left of the parent */
+    min-width: 200px;
+    /* Minimum width for dropdown */
+    z-index: 1000;
+    /* Ensure dropdown is above other elements */
 }
 
-/* Show dropdown on hover */
 .dropdown:hover .dropdown-menu {
     display: block;
+    /* Show dropdown on hover */
 }
 
 .dropdown-menu a {
     color: white;
     text-decoration: none;
-    padding: 5px 15px; /* Left/Right padding */
-    display: block; /* Display as block elements */
-    font-size: calc(0.9rem + 0.2vw); /* Responsive font size based on viewport width */
+    padding: 5px 15px;
+    display: block;
+    /* Display as block elements */
 }
 
 .dropdown-menu a:hover {
-    background-color: yellow; /* Background color on hover */
-    color: #000; /* Text color on hover */
+    background-color: yellow;
+    /* Background color on hover */
+    color: #000;
+    /* Text color on hover */
 }
 
 /* Arrow icon styling */
 .nav-bar a {
     display: flex;
-    align-items: center; /* Center align text and icon */
-    justify-content: space-between; /* Space between text and icon */
+    align-items: center;
+    /* Center align text and icon */
+    justify-content: space-between;
+    /* Space between text and icon */
 }
 
 .nav-bar a i {
-    margin-left: 5px; /* Margin for the arrow icon */
+    margin-left: 5px;
+    /* Margin for the arrow icon */
 }
 
 /* For better responsiveness */
 @media (max-width: 1090px) {
     .dropdown-menu {
-        position: static; /* Change position for mobile */
-        display: none; /* Hide dropdown by default */
-        width: 100%; /* Full width */
-        background-color: #333; /* Background color */
+        position: static;
+        /* Change position for mobile */
+        display: none;
+        /* Hide dropdown by default */
+        width: 100%;
+        /* Full width */
+        background-color: #333;
+        /* Background color */
     }
 
     .dropdown.open .dropdown-menu {
-        display: block; /* Show dropdown when open */
-    }
-
-    .dropdown-menu a {
-        font-size: 1.2rem; /* Increase font size for smaller devices */
+        display: block;
+        /* Show dropdown when open */
     }
 }
