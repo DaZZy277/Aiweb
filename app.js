@@ -4,11 +4,12 @@ const path = require('path')
 const router = require('./route/myRouter')
 const bodyParser = require('body-parser');
 const favicon = require('serve-favicon');
+const cookieParser = require('cookie-parser')
 //ส่งมาแบบ post
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.urlencoded({extended:false}))
 
-app.use(cookieParser());
+app.use(cookieParser('cookie-praser'));
 
 app.use(router)
 
