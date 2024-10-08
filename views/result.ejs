@@ -15,19 +15,18 @@
                 <div class ="container">
                 <div class="card text-center">
                     <div class="card-header">
-                      Featured
+                      result
                     </div>
                     <div class="card-body">
-                      <p class="card-title"><h6>result</h6></p>
                       <p class="card-text">Input : <%= item.inputMoney %></p>
+                      <p class="card-text">Inflation rate : <%= item.resultPercentage %></p>
                       <p class="card-text">Year : <%= item.resultYear %></p>
                       <p class="card-text">Output : <%= item.resultMoney %></p>
                       <button type="submit" class="btn btn-success" id = "submit button">Save</button>
+                      <button type="submit" class="btn btn-danger" id = "submit button"><a href ="/home" style="text-decoration: none ; color: white;">Don't save</a></button>
                       <!-- <a href="#" class="btn btn-primary">Save</a> -->
                     </div>
-                    <div class="card-footer text-body-secondary">
-                      2 days ago
-                    </div>
+                   
                 </div>
                 </div>
             </div>

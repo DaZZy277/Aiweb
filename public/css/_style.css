@@ -38,6 +38,22 @@ header {
 .logo {
     display: flex;
     align-items: center;
+    text-decoration: none;
+}
+
+.checkboxcontain{
+    display: flex;
+    justify-content: center;
+    input{
+        margin:10px;
+        padding: 1px;
+    }
+}
+
+li{
+    a{
+        text-decoration: none;
+    }
 }
 
 .logo .yellow {
@@ -54,6 +70,7 @@ header {
     color: var(--text-color);
     font-size: 1.6rem;
     font-weight: 600;
+    text-decoration: none;
 }
 
 .nav-bar {
@@ -69,6 +86,7 @@ header {
     padding: 5px 0;
     margin: 0 30px;
     transition: all 0.5s ease;
+    
 }
 
 .nav-bar a:hover {
@@ -129,6 +147,17 @@ header {
     z-index: 1002;
 }
 
+.objcontain{
+
+    
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 2rem;
+    align-items: center;
+    padding-top: 20px;
+}
+
 /* Media Queries */
 @media (max-width: 1090px) {
     #menu-icon {
@@ -139,7 +168,12 @@ header {
         padding: 10px 5%;
         justify-content: space-between;
         background-color: var(--bg-color);
+        a{
+            text-decoration: none;
+        }
     }
+
+    
 
     .nav-bar {
         position: fixed;
@@ -216,11 +250,11 @@ header {
     /* Enable positioning context for absolute children */
 }
 
-.dropdown-menu {
+.dropdown_menu {
     display: none;
     position: absolute;
     /* Position absolute to align below the parent */
-    background-color: #333;
+    background-color: #333333;
     padding: 10px;
     top: 100%;
     /* Position it directly below the dropdown link */
@@ -230,22 +264,25 @@ header {
     /* Minimum width for dropdown */
     z-index: 1000;
     /* Ensure dropdown is above other elements */
+    
 }
 
-.dropdown:hover .dropdown-menu {
+.dropdown:hover .dropdown_menu {
     display: block;
     /* Show dropdown on hover */
 }
 
-.dropdown-menu a {
+.dropdown_menu a {
+    margin:0;
     color: white;
     text-decoration: none;
     padding: 5px 15px;
     display: block;
+    font-size: 0.9rem;
     /* Display as block elements */
 }
 
-.dropdown-menu a:hover {
+.dropdown_menu a:hover {
     background-color: yellow;
     /* Background color on hover */
     color: #000;
@@ -268,7 +305,7 @@ header {
 
 /* For better responsiveness */
 @media (max-width: 1090px) {
-    .dropdown-menu {
+    .dropdown_menu {
         position: static;
         /* Change position for mobile */
         display: none;
@@ -279,8 +316,9 @@ header {
         /* Background color */
     }
 
-    .dropdown.open .dropdown-menu {
+    .dropdown.open .dropdown_menu {
         display: block;
         /* Show dropdown when open */
     }
 }
+

@@ -135,6 +135,7 @@ router.post("/checkLogin",(req,res)=>{
         if (doc) {
             // console.log('ถูก')
             res.redirect('/Archive')
+            
         } else {
             let invalid = [
                 {

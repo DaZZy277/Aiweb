@@ -7,6 +7,10 @@
     list-style: none;
 }
 
+
+
+
+
 :root {
     --bg-color: #222327;
     --text-color: #fff;
@@ -145,12 +149,13 @@ table {
 
 .objcontain{
 
-    padding: 10px;
+    
     display: flex;
     flex-direction: column;
     position: relative;
     margin: 2rem;
     align-items: center;
+    padding-top: 20px;
 }
 
 .objcontain4{
@@ -215,7 +220,7 @@ footer{
 }
 
 .card .card-text{
-    font-family: prompt;
+    font-family: IBM Plex Sans Thai;
     color: hsl(0, 0%, 30%);
 }
 
