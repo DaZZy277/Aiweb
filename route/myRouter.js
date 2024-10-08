@@ -7,12 +7,15 @@ const router = express.Router()
 
 //calling model
 const {archiveModel,loginRegisterModel} = require('../models/model')
-const { render } = require('ejs')
+// const { render } = require('ejs')
 
 // const path = require('path')
 
 router.get("/home",(req,res) =>{
     res.render('mainpage')
+    // for(let cookieName in req.cookies){
+    //     res.clearCookie(cookieName)
+    // }
 })
 
 router.get("/user",(req,res) =>{
@@ -113,41 +116,61 @@ router.post('/result',(req,res)=>{
         })
         // res.redirect('mainpage')
 
-    }else if(data.option==='Ai'){
+    }else if(data.option==='AiPredict'){
         console.log('hello im AI')
         
     }
  
 })
 
-//Login
-router.post("/login",(req,res) =>{
+//result
+router.post("/result2",(req,res) =>{
+
+    //เก็บข้อมูลไว้ซักที่ก่อนที่ยังไม่มี username จาก cookie
 
     const currentDate = new Date()
-
-    //save หน้า result ลง archive collection database
     let resultData = new archiveModel({
+        // re_username:req.cookies.username,
         re_inputMoney:req.body.re_inputMoney,
+        re_percent:req.body.re_percent,
         re_resultYear:req.body.re_resultYear,
         re_checkbox:GB_getData_option(),
         re_resultMoney:req.body.re_resultMoney,
         re_date:currentDate.toISOString().split('T')[0]
     })
 
-    resultData.save().then(()=>{
-    }).catch((err)=> console.log(err))
-
-
+    global.globalresultData = resultData;
 
     //เช็คสถานะ login ของ user
     const loggedIn = req.cookies.username;
     if (loggedIn){
+        resultData.re_username = req.cookies.username
+
+        resultData.save().then(()=>{
+            delete resultData.re_username
+        }).catch((err)=> console.log(err))
+
         res.redirect('/Archive')
     }else{
-        res.render('login')
+        res.render('login.ejs')
     }
-    
+
 }) 
+
+router.get("/login",(req,res) =>{
+    
+     //เช็คสถานะ login ของ user
+     const loggedIn = req.cookies.username;
+     if (loggedIn){
+         res.redirect('/Archive')
+     }else{
+         res.render('login.ejs')
+     }
+    
+    
+})
+
+
 
 //checkRegister
 router.post("/checkRegister",(req,res)=>{
@@ -171,11 +194,20 @@ router.post("/checkRegister",(req,res)=>{
 
     //save regier data ลงใน loginregister collection DB
     registerData.save().then(()=>{
-        res.redirect('/Archive')
-        // res.render('archive',{
-        //     number:number
-        // })
     }).catch((err)=> console.log(err))
+
+    //เมื่อ register แล้ว จะทำการบันทึกข้อมูลใน db archive
+    if(globalresultData){
+        globalresultData.re_username = req.cookies.username
+    globalresultData.save().then(()=>{
+        delete globalresultData.re_username
+    }).catch((err)=> console.log(err))
+    }else{
+        console.log('err')
+    }
+    
+
+    res.redirect('/Archive')
 
       
 })
@@ -190,7 +222,18 @@ router.post("/checkLogin",(req,res)=>{
             res.cookie('loggedIn','true',{maxAge:3600000,httpOnly:true})
             res.cookie('username', doc.username, { maxAge: 3600000, httpOnly: true })
             // console.log(doc.username)
-            res.redirect('/Archive')
+
+        if(globalresultData){
+            //เมื่อ login แล้ว จะทำการบันทึกข้อมูลใน db archive
+            globalresultData.re_username = req.cookies.username
+            globalresultData.save().then(()=>{
+                delete globalresultData.re_username
+            }).catch((err)=> console.log(err))
+
+        }else{
+            console.log('err')
+        }
+        res.redirect('/Archive')
             
         } else {
             let invalid = [
@@ -214,7 +257,7 @@ router.get("/Archive",(req,res) =>{
     
 
     //เรียกข้อมูล จาก archivemodel ไปที่ หน้า archive 
-    archiveModel.find().then(doc=>{
+    archiveModel.find({ re_username:req.cookies.username }).then(doc=>{
         res.render('archive.ejs', {saves: doc})
     }).catch((err)=>console.log(err))
 
