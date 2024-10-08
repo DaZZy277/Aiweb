@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.urlencoded({extended:false}))
 
-app.use(cookieParser());
+app.use(cookieParser('cookie-praser'));
 
 app.use(router)
 
