@@ -85,67 +85,28 @@
         <div class="objcontain">
             <h1>Welcome User</h1>
             <div class="row row-cols-3 justify-content-center">
+                <% Object.values(saves).forEach(function(item){ %>
                 <div class="card" style="width: 18rem; margin: 10px;">
                     <div class="card-body">
-                        <p class="card-text">Input : 0000</p>
-                        <p class="card-text">Year Input : 0000</p>
-                        <p class="card-text">Output : 0000</p>
+                        <p class="cardtext">Name : <%= item.re_username%></p>
+                        <p class="card-text">Type : <%= item.re_checkbox%></p>
+                        <p class="card-text">Input : <%= item.re_inputMoney%></p>
+                        <div class="card-text">Percentage : <%= item.re_percent%></div>
+                        <p class="card-text">Year Input : <%= item.re_resultYear%></p>
+                        <p class="card-text">Output : <%= item.re_resultMoney%></p>
+                        <p class="card-text">Date : <%= item.re_date%></p>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Delete
                         </button>
                     </div>
                    
                 </div>
-                <div class="card" style="width: 18rem; margin: 10px;">
-                    <div class="card-body">
-                        <p class="card-text">Input : 0000</p>
-                        <p class="card-text">Year Input : 0000</p>
-                        <p class="card-text">Output : 0000</p>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Delete
-                        </button>
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem; margin: 10px;">
-                    <div class="card-body">
-                        <p class="card-text">Input : 0000</p>
-                        <p class="card-text">Year Input : 0000</p>
-                        <p class="card-text">Output : 0000</p>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Delete
-                        </button>
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem; margin: 10px;">
-                    <div class="card-body">
-                        <p class="card-text">Input : 0000</p>
-                        <p class="card-text">Year Input : 0000</p>
-                        <p class="card-text">Output : 0000</p>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Delete
-                        </button>
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem; margin: 10px;">
-                    <div class="card-body">
-                        <p class="card-text">Input : 0000</p>
-                        <p class="card-text">Year Input : 0000</p>
-                        <p class="card-text">Output : 0000</p>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Delete
-                        </button>
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem; margin: 10px;">
-                    <div class="card-body">
-                        <p class="card-text">Input : 0000</p>
-                        <p class="card-text">Year Input : 0000</p>
-                        <p class="card-text">Output : 0000</p>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Delete
-                        </button>
-                    </div>
-                </div>
+                <% }) %>
+                
+                
+                
+                
+                
 
                 
             </div>

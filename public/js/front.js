@@ -44,3 +44,23 @@ window.addEventListener('scroll', () => {
 
     lastScrollTop = scrollTop; // Update the last scroll position
 });
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+//for choise
+const item1 = document.querySelector('#item1')
+const item2 = document.querySelector('#item2')
+const x = document.querySelector('#x')
+
+item1.addEventListener('change',function(){
+    if(item1.checked){
+        x.style.display = 'none'
+    }
+})
+
+item2.addEventListener('change',function(){
+    if(item2.checked){
+        x.style.display = 'block'
+    }
+})
