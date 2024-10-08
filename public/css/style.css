@@ -26,7 +26,7 @@ table {
 
 .menu {
     background-color: #f0fd34e3;
- 
+    width: 100%;
     /* padding: 10px; */
     /* display: flex;
     align-items: center; */
@@ -132,6 +132,7 @@ table {
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin:0 auto;
     
 }
 
