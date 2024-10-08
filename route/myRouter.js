@@ -28,10 +28,36 @@ router.get("/archive",(req,res) =>{
     // console.log("555")
 }) 
 
-router.get("/navbar",(req,res) =>{
-    res.render('navbar')
+router.get("/index",(req,res) =>{
+    res.render('index')
     // console.log("555")
 }) 
+
+router.get("/whatwedoai",(req,res) =>{
+    res.render('whatwedoai')
+    // console.log("555")
+}) 
+
+
+router.get("/whatwedowebapp",(req,res) =>{
+    res.render('whatwedowebapp')
+    // console.log("555")
+}) 
+
+router.get("/team",(req,res) =>{
+    res.render('team')
+    // console.log("555")
+}) 
+
+router.get("/member",(req,res) =>{
+    res.render('member')
+    // console.log("555")
+}) 
+
+
+
+
+
 
 router.post('/result',(req,res)=>{
 
