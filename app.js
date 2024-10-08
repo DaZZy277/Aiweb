@@ -3,8 +3,7 @@ const app = express()
 const path = require('path')
 const router = require('./route/myRouter')
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser')
-
+const favicon = require('serve-favicon');
 //ส่งมาแบบ post
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.urlencoded({extended:false}))
@@ -18,7 +17,8 @@ app.set('view engine','ejs')
 app.use(express.static(path.join(__dirname,'public')))
 
 
+app.use(favicon(__dirname + '/public/img/favicon.ico'));
 
-app.listen(8080,()=>{
-    console.log("Run Server at port 8080")
+app.listen(8000,()=>{
+    console.log("Run Server at port 8000 ")
 })

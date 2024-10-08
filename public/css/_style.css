@@ -1,0 +1,323 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'IBM Plex Sans Thai', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+:root {
+    --bg-color: #222327;
+    --text-color: #fff;
+    --main-color: yellow;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding-top: 60px;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-color);
+    padding: 10px 12%;
+    transition: all 0.5s ease;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.checkboxcontain{
+    display: flex;
+    justify-content: center;
+    input{
+        margin:10px;
+        padding: 1px;
+    }
+}
+
+li{
+    a{
+        text-decoration: none;
+    }
+}
+
+.logo .yellow {
+    color: yellow;
+}
+
+.logo i {
+    color: var(--main-color);
+    font-size: 28px;
+    margin-right: 3px;
+}
+
+.logo span {
+    color: var(--text-color);
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+.nav-bar a {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 5px 0;
+    margin: 0 30px;
+    transition: all 0.5s ease;
+    
+}
+
+.nav-bar a:hover {
+    color: var(--main-color);
+}
+
+.nav-bar a.active {
+    color: var(--main-color);
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.main a {
+    margin-right: 25px;
+    margin-left: 10px;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.5s ease;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+}
+
+.user i {
+    color: var(--main-color);
+    font-size: 15px;
+    margin-right: 7px;
+}
+
+.main a:hover {
+    color: var(--main-color);
+}
+
+#menu-icon {
+    font-size: 35px;
+    color: var(--text-color);
+    cursor: pointer;
+    z-index: 10001;
+    display: none;
+}
+
+/* Close button styling */
+.close-btn {
+    position: absolute;
+    top: 28px;
+    right: 30px;
+    font-size: 30px;
+    color: var(--text-color);
+    cursor: pointer;
+    display: none;
+    z-index: 1002;
+}
+
+.objcontain{
+
+    
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 2rem;
+    align-items: center;
+    padding-top: 20px;
+}
+
+/* Media Queries */
+@media (max-width: 1090px) {
+    #menu-icon {
+        display: block;
+    }
+
+    header {
+        padding: 10px 5%;
+        justify-content: space-between;
+        background-color: var(--bg-color);
+        a{
+            text-decoration: none;
+        }
+    }
+
+    
+
+    .nav-bar {
+        position: fixed;
+        top: 60px;
+        /* Adjust this based on your header height */
+        right: -100%;
+        width: 100%;
+        height: calc(100% - 60px);
+        background-color: var(--bg-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        transition: right 0.5s ease;
+        z-index: 1000;
+        padding-top: 20px;
+    }
+
+    .nav-bar.open {
+        right: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--bg-color);
+    }
+
+    .nav-bar a {
+        margin: 20px 0;
+        font-size: 1.5rem;
+        text-align: left;
+        padding-left: 20px;
+    }
+
+    .nav-bar a:hover {
+        color: var(--main-color);
+        transform: translateY(5px);
+    }
+
+    .nav-bar.open~.close-btn {
+        display: block;
+    }
+
+    .main a {
+        margin: 20px 0;
+    }
+
+    /* Adjust for content not to overlap with header */
+    section {
+        margin-top: 80px;
+        /* Adjust according to your header height */
+    }
+}
+
+@media (min-width: 1090px) {
+    header {
+        justify-content: space-between;
+    }
+
+    .nav-bar {
+        margin: 0;
+        flex-grow: 1;
+        justify-content: center;
+    }
+
+    .main a {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+
+/* dropdown styles */
+.dropdown {
+    position: relative;
+    /* Enable positioning context for absolute children */
+}
+
+.dropdown_menu {
+    display: none;
+    position: absolute;
+    /* Position absolute to align below the parent */
+    background-color: #333333;
+    padding: 10px;
+    top: 100%;
+    /* Position it directly below the dropdown link */
+    left: 0;
+    /* Align with the left of the parent */
+    min-width: 200px;
+    /* Minimum width for dropdown */
+    z-index: 1000;
+    /* Ensure dropdown is above other elements */
+    
+}
+
+.dropdown:hover .dropdown_menu {
+    display: block;
+    /* Show dropdown on hover */
+}
+
+.dropdown_menu a {
+    margin:0;
+    color: white;
+    text-decoration: none;
+    padding: 5px 15px;
+    display: block;
+    font-size: 0.9rem;
+    /* Display as block elements */
+}
+
+.dropdown_menu a:hover {
+    background-color: yellow;
+    /* Background color on hover */
+    color: #000;
+    /* Text color on hover */
+}
+
+/* Arrow icon styling */
+.nav-bar a {
+    display: flex;
+    align-items: center;
+    /* Center align text and icon */
+    justify-content: space-between;
+    /* Space between text and icon */
+}
+
+.nav-bar a i {
+    margin-left: 5px;
+    /* Margin for the arrow icon */
+}
+
+/* For better responsiveness */
+@media (max-width: 1090px) {
+    .dropdown_menu {
+        position: static;
+        /* Change position for mobile */
+        display: none;
+        /* Hide dropdown by default */
+        width: 100%;
+        /* Full width */
+        background-color: #333;
+        /* Background color */
+    }
+
+    .dropdown.open .dropdown_menu {
+        display: block;
+        /* Show dropdown when open */
+    }
+}
+

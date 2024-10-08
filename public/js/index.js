@@ -36,3 +36,10 @@ registerBtn.addEventListener('click',()=>{
     document.querySelector(".col-1").style.borderRadius = "0 20% 25% 0";
 
 })
+
+const myModal = document.getElementById('staticBackdrop')
+const myInput = document.getElementById('delbtn')
+
+myModal.addEventListener('shown.bs.modal', () => {
+  myInput.focus()
+})
