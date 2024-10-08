@@ -9,10 +9,11 @@ mongoose.connect(dbUrl).then(()=>console.log('Connect to archive DB susccesfully
 
     //schema of archive
 let archiveSchema = mongoose.Schema({
-    money_input:Number,
-    year_input:Number,
-    checkbox:String,
-    perccentage_input:Number
+    re_inputMoney:Number,
+    re_resultYear:Number,
+    re_checkbox:String,
+    re_resultMoney:Number,
+    re_date:String
 })
 
     //schema of login & registor
