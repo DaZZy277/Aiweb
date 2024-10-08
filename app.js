@@ -8,6 +8,8 @@ const favicon = require('serve-favicon');
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.urlencoded({extended:false}))
 
+app.use(cookieParser());
+
 app.use(router)
 
 app.set('views',path.join(__dirname,'views'))

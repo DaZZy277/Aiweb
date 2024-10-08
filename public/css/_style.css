@@ -269,6 +269,7 @@ li{
 .dropdown:hover .dropdown_menu {
     display: block;
     /* Show dropdown on hover */
+    
 }
 
 .dropdown_menu a {
