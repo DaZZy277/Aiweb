@@ -56,32 +56,14 @@
 
     <div class="main">
         <li class="dropdown">
-            <i class="ri-user-fill"></i>
-            <a href="/login"> Sign In | Register</i></a>
+            <a href="/login"> <i class="ri-user-fill"></i>
+                Sign In | Register</a>
             <div class="dropdown_menu">
               <a href="/archive">Archive</a>
             </div>
           </li>
       <div class="bx bx-menu" id="menu-icon"></div>
     </div>
-    <script>
-        const optionAi = document.querySelector('#item1')
-        const optionManual = document.querySelector('#item2')
-        const xx = document.querySelector('#xx')
-
-        optionAi.addEventListener('change',function(){
-            if (optionAi.checked){
-                xx.style.display = 'none'
-            }
-        })
-
-        optionManual.addEventListener('change',function(){
-            if (optionManual.checked){
-                xx.style.display = 'block'
-            }
-        })
-    </script>
-
     <div class="close-btn" id="close-icon">
       <i class="ri-close-fill"></i>
     </div>
@@ -123,7 +105,7 @@
               aria-describedby="inputGroup-sizing-default"
               id="Percentage_input_Manual"
               name="Percentage_input_Manual"
-              placeholder="Enter percentage here..."
+              placeholder="Enter Inflation rate here..."
             />
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-default"
@@ -153,7 +135,7 @@
         </div>
 
         <div class="objcontain">
-          <button type="submit" class="btn btn-success" id="submit button">
+          <button type="submit" class="btn btn-dark" id="submit button">
             Submit
           </button>
         </div>
@@ -161,6 +143,23 @@
     </div>
   </div>
   <script src="js/front.js"></script>
+  <script>
+    const optionAi = document.querySelector('#item1')
+    const optionManual = document.querySelector('#item2')
+    const xx = document.querySelector('#xx')
+
+    optionAi.addEventListener('change',function(){
+        if (optionAi.checked){
+            xx.style.display = 'none'
+        }
+    })
+
+    optionManual.addEventListener('change',function(){
+        if (optionManual.checked){
+            xx.style.display = 'block'
+        }
+    })
+</script>
 </body>
 
 <footer>
