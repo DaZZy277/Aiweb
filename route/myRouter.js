@@ -128,32 +128,39 @@ router.post('/result',(req,res)=>{
 //result
 router.post("/result2",(req,res) =>{
 
-    //เก็บข้อมูลไว้ซักที่ก่อนที่ยังไม่มี username จาก cookie
-
     const currentDate = new Date()
-    let resultData = new archiveModel({
-        // re_username:req.cookies.username,
-        re_inputMoney:req.body.re_inputMoney,
-        re_percent:req.body.re_percent,
-        re_resultYear:req.body.re_resultYear,
-        re_checkbox:GB_getData_option(),
-        re_resultMoney:req.body.re_resultMoney,
-        re_date:currentDate.toISOString().split('T')[0]
-    })
-
-    global.globalresultData = resultData;
 
     //เช็คสถานะ login ของ user
     const loggedIn = req.cookies.username;
     if (loggedIn){
-        resultData.re_username = req.cookies.username
+        let resultData = new archiveModel({
+            re_username:req.cookies.username,
+            re_inputMoney:req.body.re_inputMoney,
+            re_percent:req.body.re_percent,
+            re_resultYear:req.body.re_resultYear,
+            re_checkbox:GB_getData_option(),
+            re_resultMoney:req.body.re_resultMoney,
+            re_date:currentDate.toISOString().split('T')[0]
+        })
+        
 
         resultData.save().then(()=>{
-            delete resultData.re_username
         }).catch((err)=> console.log(err))
 
         res.redirect('/Archive')
+
     }else{
+
+        //เก็บข้อมูลไว้ที่ session ก่อนที่ยังไม่มี username จาก cookie
+        req.session.output = {
+            re_inputMoney:req.body.re_inputMoney,
+            re_percent:req.body.re_percent,
+            re_resultYear:req.body.re_resultYear,
+            re_checkbox:GB_getData_option(),
+            re_resultMoney:req.body.re_resultMoney,
+            re_date:currentDate.toISOString().split('T')[0]
+        }
+            
         res.render('login.ejs')
     }
 
@@ -199,11 +206,23 @@ router.post("/checkRegister",(req,res)=>{
     }).catch((err)=> console.log(err))
 
     //เมื่อ register แล้ว จะทำการบันทึกข้อมูลใน db archive
-    if(globalresultData){
-        globalresultData.re_username = req.cookies.username
-    globalresultData.save().then(()=>{
-        delete globalresultData.re_username
-    }).catch((err)=> console.log(err))
+    if(req.session.output){
+        let output = req.session.output;
+        // บันทึกข้อมูลที่ดึงจาก session ลงใน database
+        let resultData = new archiveModel({
+            re_username:req.body.username,
+            re_inputMoney:output.re_inputMoney,
+            re_percent:output.re_percent,
+            re_resultYear:output.re_resultYear,
+            re_checkbox:output.re_checkbox,
+            re_resultMoney:output.re_resultMoney,
+            re_date:output.re_date
+        })
+        
+        resultData.save().then(()=>{
+            // ล้าง session เพื่อไม่ให้เก็บ output ไว้เกินจำเป็น
+            req.session.output = null;
+        }).catch((err)=> console.log(err))
     }else{
         console.log('err')
     }
@@ -225,17 +244,29 @@ router.post("/checkLogin",(req,res)=>{
             res.cookie('username', doc.username, { maxAge: 3600000, httpOnly: true })
             // console.log(doc.username)
 
-        if(globalresultData){
-            //เมื่อ login แล้ว จะทำการบันทึกข้อมูลใน db archive
-            globalresultData.re_username = req.cookies.username
-            globalresultData.save().then(()=>{
-                delete globalresultData.re_username
-            }).catch((err)=> console.log(err))
-
-        }else{
-            console.log('err')
-        }
-        res.redirect('/Archive')
+            //เมื่อ register แล้ว จะทำการบันทึกข้อมูลใน db archive
+            if(req.session.output){
+                let output = req.session.output;
+                // บันทึกข้อมูลที่ดึงจาก session ลงใน database
+                let resultData = new archiveModel({
+                    re_username:doc.username,
+                    re_inputMoney:output.re_inputMoney,
+                    re_percent:output.re_percent,
+                    re_resultYear:output.re_resultYear,
+                    re_checkbox:output.re_checkbox,
+                    re_resultMoney:output.re_resultMoney,
+                    re_date:output.re_date
+                })
+                
+                resultData.save().then(()=>{
+                    // ล้าง session เพื่อไม่ให้เก็บ output ไว้เกินจำเป็น
+                    req.session.output = null;
+                }).catch((err)=> console.log(err))
+            }else{
+                console.log('err')
+            }
+            
+            res.redirect('/Archive')
             
         } else {
             let invalid = [
