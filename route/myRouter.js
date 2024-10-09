@@ -115,6 +115,8 @@ router.post('/result',(req,res)=>{
  
 })
 
+
+
 //result
 router.post("/result2",(req,res) =>{
 
@@ -288,6 +290,9 @@ router.get("/Archive",(req,res) =>{
          res.redirect('/login')
      }
 
+    const userdis = req.cookies.username;
+    const Helement =document.getElementById("user_display");
+    Helement.innerHTML = "Welcome" + userdis ;
     
 })
 
