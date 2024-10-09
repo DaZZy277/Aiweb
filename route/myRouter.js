@@ -284,17 +284,28 @@ router.get("/Archive",(req,res) =>{
      if (loggedIn){
          //เรียกข้อมูล จาก archivemodel ไปที่ หน้า archive 
         archiveModel.find({ re_username:req.cookies.username }).then(doc=>{
-        res.render('archive.ejs', {saves: doc,username:req.cookies.username})
+        res.render('archive.ejs', {
+            saves: doc,
+            username:req.cookies.username
+        })
+        // console.log(doc.username)
     }).catch((err)=>console.log(err))
      }else{
          res.redirect('/login')
      }
 
-    const userdis = req.cookies.username;
-    const Helement =document.getElementById("user_display");
-    Helement.innerHTML = "Welcome" + userdis ;
+    
     
 })
 
+
+//delete archive data
+router.post('/delete_archive',(req,res)=>{
+    console.log(req.body._id)
+    archiveModel.findOneAndDelete({ _id: req.body._id },{useFindAndModify:false}).then(()=>{
+
+    res.redirect('/Archive')
+    }).catch(err=>console.log(err))
+})
 // 
 module.exports = router
