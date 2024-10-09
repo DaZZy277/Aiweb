@@ -64,3 +64,6 @@ item2.addEventListener('change',function(){
         x.style.display = 'block'
     }
 })
+
+
+//for submit delete button
