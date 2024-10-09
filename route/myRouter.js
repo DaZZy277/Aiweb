@@ -11,45 +11,37 @@ const {archiveModel,loginRegisterModel} = require('../models/model')
 
 // const path = require('path')
 
-router.get("/home",(req,res) =>{
-    res.render('mainpage')
+router.get(["/home","/"],(req,res) =>{
+    res.render('mainpage',{username:req.cookies.username})
     // for(let cookieName in req.cookies){
     //     res.clearCookie(cookieName)
     // }
 })
 
-router.get("/user",(req,res) =>{
-    res.render('User')
-    // console.log("555")
-}) 
-
-
-
-
 
 router.get("/index",(req,res) =>{
-    res.render('index')
+    res.render('index',{username:req.cookies.username})
     // console.log("555")
 }) 
 
-router.get("/whatwedoai",(req,res) =>{
-    res.render('whatwedoai')
-    // console.log("555")
-}) 
+// router.get("/whatwedoai",(req,res) =>{
+//     res.render('whatwedoai',{username:req.cookies.username})
+//     // console.log("555")
+// }) 
 
 
 router.get("/whatwedowebapp",(req,res) =>{
-    res.render('whatwedowebapp')
+    res.render('whatwedowebapp',{username:req.cookies.username})
     // console.log("555")
 }) 
 
 router.get("/team",(req,res) =>{
-    res.render('team')
+    res.render('team',{username:req.cookies.username})
     // console.log("555")
 }) 
 
 router.get("/member",(req,res) =>{
-    res.render('member')
+    res.render('member',{username:req.cookies.username})
     // console.log("555")
 }) 
 
@@ -159,7 +151,7 @@ router.post("/result2",(req,res) =>{
             re_date:currentDate.toISOString().split('T')[0]
         }
             
-        res.render('login.ejs')
+        res.redirect('/login')
     }
 
 }) 
@@ -242,7 +234,7 @@ router.post("/checkLogin",(req,res)=>{
             res.cookie('username', doc.username, { maxAge: 3600000, httpOnly: true })
             // console.log(doc.username)
 
-            //เมื่อ register แล้ว จะทำการบันทึกข้อมูลใน db archive
+            //เมื่อ login แล้ว จะทำการบันทึกข้อมูลใน db archive
             if(req.session.output){
                 let output = req.session.output;
                 // บันทึกข้อมูลที่ดึงจาก session ลงใน database
@@ -286,11 +278,15 @@ router.post("/checkLogin",(req,res)=>{
 
 router.get("/Archive",(req,res) =>{
     
-
-    //เรียกข้อมูล จาก archivemodel ไปที่ หน้า archive 
-    archiveModel.find({ re_username:req.cookies.username }).then(doc=>{
-        res.render('archive.ejs', {saves: doc})
+    const loggedIn = req.cookies.username;
+     if (loggedIn){
+         //เรียกข้อมูล จาก archivemodel ไปที่ หน้า archive 
+        archiveModel.find({ re_username:req.cookies.username }).then(doc=>{
+        res.render('archive.ejs', {saves: doc,username:req.cookies.username})
     }).catch((err)=>console.log(err))
+     }else{
+         res.redirect('/login')
+     }
 
     
 })

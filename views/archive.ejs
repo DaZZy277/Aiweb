@@ -49,8 +49,14 @@
 
       <div class="main">
         <li class="dropdown">
+            <% if (username) { %>
+            <a href="#"> <i class="ri-user-fill"></i>
+              <%= username %>
+            </a>
+            <% } else { %>
             <a href="/login"> <i class="ri-user-fill"></i>
                 Sign In | Register</a>
+            <% } %>
             <div class="dropdown_menu">
               <a href="/archive">Archive</a>
             </div>
@@ -83,7 +89,7 @@
         </div>
 
         <div class="objcontain">
-            <h1>Welcome User</h1>
+            <h1>Welcome <%= username %></h1>
             <div class="row row-cols-3 justify-content-center">
                 <% Object.values(saves).forEach(function(item){ %>
                 <div class="card" style="width: 18rem; margin: 10px;">
