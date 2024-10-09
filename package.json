@@ -15,7 +15,7 @@
     "cookie-parser": "^1.0.0",
     "ejs": "^3.1.10",
     "express": "^4.21.0",
-    "express-session": "^1.0.0",
+    "express-session": "^1.18.1",
     "jsdom": "^25.0.1",
     "mongodb": "^6.9.0",
     "mongoose": "^8.6.2",
