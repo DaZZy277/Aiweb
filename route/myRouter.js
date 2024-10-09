@@ -290,9 +290,7 @@ router.get("/Archive",(req,res) =>{
          res.redirect('/login')
      }
 
-    const userdis = req.cookies.username;
-    const Helement =document.getElementById("user_display");
-    Helement.innerHTML = "Welcome" + userdis ;
+    
     
 })
 
