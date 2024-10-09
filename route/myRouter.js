@@ -123,6 +123,8 @@ router.post('/result',(req,res)=>{
  
 })
 
+
+
 //result
 router.post("/result2",(req,res) =>{
 
@@ -261,6 +263,9 @@ router.get("/Archive",(req,res) =>{
         res.render('archive.ejs', {saves: doc})
     }).catch((err)=>console.log(err))
 
+    const userdis = req.cookies.username;
+    const Helement =document.getElementById("user_display");
+    Helement.innerHTML = "Welcome" + userdis ;
     
 })
 

@@ -83,7 +83,9 @@
         </div>
 
         <div class="objcontain">
-            <h1>Welcome User</h1>
+            
+                <h1 id="user_display"></h1>
+            
             <div class="row row-cols-3 justify-content-center">
                 <% Object.values(saves).forEach(function(item){ %>
                 <div class="card" style="width: 18rem; margin: 10px;">
@@ -119,6 +121,7 @@
 
 
   <script src="js/front.js"></script>
+  <script src="/route/myRouter.js"></script>
 </body>
 
 <footer></footer>
