@@ -11,7 +11,8 @@
 
 /* ====== Body ===== */
 body{
-    background: url('/img/banana.png');
+    /* background: url('/img/yellow_bg.jpg'); */
+    background-color: rgb(228, 228, 228);
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
@@ -43,7 +44,7 @@ body{
     flex-direction: column;
     width: 55%;
     background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(30px);
+    /* backdrop-filter: blur(30px); */
     border-radius: 0 25% 20% 0;
     transition: border-radius .3s;
 }

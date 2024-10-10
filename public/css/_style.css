@@ -136,7 +136,7 @@ li{
 
 /* Close button styling */
 .close-btn {
-    position: absolute;
+    position: relative;
     top: 28px;
     right: 30px;
     font-size: 30px;
@@ -213,6 +213,7 @@ li{
 
     .nav-bar.open~.close-btn {
         display: block;
+        position: relative;
     }
 
     .main a {
