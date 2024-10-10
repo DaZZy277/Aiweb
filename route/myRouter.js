@@ -1,7 +1,7 @@
 //Routing
 const express = require('express')
 const router = express.Router()
-
+const axios = require('axios')
 
 
 
@@ -62,10 +62,10 @@ router.post('/result',(req,res)=>{
     
     console.log(data.option)
 
-    function getData_option(){
-        return data.option
-    }
-    global.GB_getData_option = getData_option
+    // function getData_option(){
+    //     return data.option
+    // }
+    // global.GB_getData_option = getData_option
     // console.log(data.money_input+100)
 
     //คำนวนเงินเฟ้อแบบ manual
@@ -93,7 +93,8 @@ router.post('/result',(req,res)=>{
                 resultMoney:futureValue,
                 resultPercentage:req.body.Percentage_input_Manual,
                 resultYear:req.body.Year_input,
-                inputMoney:req.body.money_input
+                inputMoney:req.body.money_input,
+                option:req.body.option
             }
         ]
 
@@ -109,7 +110,30 @@ router.post('/result',(req,res)=>{
         // res.redirect('mainpage')
 
     }else if(data.option==='AiPredict'){
-        console.log('hello im AI')
+        // console.log('hello im AI')
+        async function getPrediction(n_years, initial_amount) {
+            try {
+                const response = await axios.post('http://127.0.0.1:5000/predict',{
+                    n_years: n_years,
+                    initial_amount: initial_amount
+                })
+                // หลังจากรับ response สำเร็จ
+                // ดึงข้อมูลของปีสุดท้ายจาก response.data
+                const lastYearPrediction = response.data[response.data.length - 1]
+
+                // ส่งข้อมูลปีสุดท้ายไปยังไฟล์ EJS
+                res.render('prediction.ejs', { 
+                    lastPrediction: lastYearPrediction,
+                    inputMoney:req.body.money_input,
+                    option:req.body.option
+                });
+                
+            }catch(err){
+                console.error('Error:', err)
+                res.status(500).send('Error occurred')
+            }
+        }
+        getPrediction(data.year_input, data.money_input); // เรียกใช้ฟังก์ชันเพื่อทำนายผล
         
     }
     else{
@@ -138,7 +162,7 @@ router.post("/result2",(req,res) =>{
             re_inputMoney:req.body.re_inputMoney,
             re_percent:req.body.re_percent,
             re_resultYear:req.body.re_resultYear,
-            re_checkbox:GB_getData_option(),
+            re_checkbox:req.body.re_option,
             re_resultMoney:req.body.re_resultMoney,
             re_date:currentDate.toISOString().split('T')[0]
         })
@@ -156,7 +180,7 @@ router.post("/result2",(req,res) =>{
             re_inputMoney:req.body.re_inputMoney,
             re_percent:req.body.re_percent,
             re_resultYear:req.body.re_resultYear,
-            re_checkbox:GB_getData_option(),
+            re_checkbox:req.body.re_option,
             re_resultMoney:req.body.re_resultMoney,
             re_date:currentDate.toISOString().split('T')[0]
         }

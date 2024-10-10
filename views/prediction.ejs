@@ -18,7 +18,6 @@
 </head>
 <body>
     <form method="post" action="/result2" >
-        <% Object.values(output).forEach(function(item){ %>
             <div class = "background">
                 <div class ="container">
                 <div class="card text-center">
@@ -26,20 +25,19 @@
                       result
                     </div>
                     <div class="card-body">
-                      
-                      <input type="text" class="card-text" name="re_option" id="xx" value="<%= item.option %>" readonly>
+                      <input type="text" class="card-text" name="re_option" id="xx" value="<%= option %>" readonly>
                      
                       <label for="" class="card-text">Input : </label>
-                      <input type="text" class="card-text" name="re_inputMoney" value="<%= item.inputMoney %>" readonly>
+                      <input type="text" class="card-text" name="re_inputMoney" value="<%= inputMoney %>" readonly>
 
-                      <label for="" class="card-text">Inflation rate : <%= item.option %></label>
-                      <input class="card-text" type="text" name="re_percent" value="<%= item.resultPercentage %>" readonly>
+                      <label for="" class="card-text">Inflation rate : <%= option %></label>
+                      <input class="card-text" type="text" name="re_percent" value="<%= lastPrediction.inflation_rate %>" readonly>
 
                       <label for="" class="card-text">Year : </label>
-                      <input class="card-text" type="text" name="re_resultYear" value="<%= item.resultYear %>" readonly>
+                      <input class="card-text" type="text" name="re_resultYear" value="<%= lastPrediction.year %>" readonly>
 
                       <label for="" class="card-text">Output : </label>
-                      <input class="card-text" type="text" name="re_resultMoney" value="<%= item.resultMoney %>" readonly>
+                      <input class="card-text" type="text" name="re_resultMoney" value="<%= lastPrediction.amount %>" readonly>
 
                       <button type="submit" class="btn btn-success" id = "submit button">Save</button>
                       <button type="submit" class="btn btn-danger" id = "submit button"><a href ="/home" style="text-decoration: none ; color: white;">Don't save</a></button>
@@ -51,7 +49,6 @@
             </div>
 
         
-        <% }) %>
 
     </form>
 
