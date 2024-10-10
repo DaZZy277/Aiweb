@@ -29,7 +29,7 @@ app.set('view engine','ejs')
 app.use(express.static(path.join(__dirname,'public')))
 
 
-app.use(favicon(__dirname + '/public/img/favicon.ico'));
+app.use(favicon(__dirname + '/public/img/official_logo.png'));
 
 app.listen(8000,()=>{
     console.log("Run Server at port 8000 ")

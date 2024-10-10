@@ -55,19 +55,23 @@
     </ul>
 
     <div class="main">
-        <li class="dropdown">
-          <% if (username) { %>
-            <a href="#"> <i class="ri-user-fill"></i>
-              <%= username %>
-            </a>
-            <% } else { %>
-            <a href="/login"> <i class="ri-user-fill"></i>
-                Sign In | Register</a>
-            <% } %>
-            <div class="dropdown_menu">
-              <a href="/archive">Archive</a>
-            </div>
-          </li>
+      <li class="dropdown">
+        <% if (username) { %>
+        <a href="#"> <i class="ri-user-fill"></i>
+          <%= username %>
+        </a>
+        <div class="dropdown_menu">
+          <a href="/archive">Archive</a>
+        </div>
+        <div class="dropdown_menu">
+          <a href="#">log out</a>
+        </div>
+        <% } else { %>
+        <a href="/login"> <i class="ri-user-fill"></i>
+            Sign In | Register
+          </a>  
+        <% } %>
+      </li>
       <div class="bx bx-menu" id="menu-icon"></div>
     </div>
     <div class="close-btn" id="close-icon">
@@ -82,6 +86,8 @@
             <input
               type="number"
               class="form-control"
+              step="0.01"
+              min="1"
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
               id="money-input"
@@ -107,6 +113,8 @@
             <input
               type="number"
               class="form-control"
+              step="0.01"
+              min="0"
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
               id="Percentage_input_Manual"

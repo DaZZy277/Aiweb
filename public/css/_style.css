@@ -10,7 +10,7 @@
 :root {
     --bg-color: #222327;
     --text-color: #fff;
-    --main-color: yellow;
+    --main-color: #feb729;
 }
 
 body {
@@ -56,7 +56,7 @@ li{
 }
 
 .logo .yellow {
-    color: yellow;
+    color: #feb729;
 }
 
 .logo i {
@@ -227,6 +227,11 @@ li{
     }
 }
 
+form{
+    padding-top: 20%;
+    position:relative;
+}
+
 @media (min-width: 1090px) {
     header {
         justify-content: space-between;
@@ -284,7 +289,7 @@ li{
 }
 
 .dropdown_menu a:hover {
-    background-color: yellow;
+    background-color: #feb729;
     /* Background color on hover */
     color: #000;
     /* Text color on hover */

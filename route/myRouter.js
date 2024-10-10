@@ -112,6 +112,14 @@ router.post('/result',(req,res)=>{
         console.log('hello im AI')
         
     }
+    else{
+        if(data.Percentage_input_Manual){
+            data.option = 'Manual';
+            console.log(1);
+        }else{
+            data.option = 'AiPredict';
+        }
+    }
  
 })
 

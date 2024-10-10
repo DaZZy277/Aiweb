@@ -12,7 +12,7 @@
 /* ====== Body ===== */
 body{
     /* background: url('/img/yellow_bg.jpg'); */
-    background-color: rgb(228, 228, 228);
+    background-color: #1f1f1f;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
@@ -30,8 +30,9 @@ body{
     display: flex;
     width: 1000px;
     height: 600px;
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    border-radius: 30px;
+    /* border: 3px solid #feb729; */
+    background: #000000;
+    border-radius: 5px;
     backdrop-filter: blur(20px);
     overflow: hidden;
 }
@@ -43,10 +44,12 @@ body{
     justify-content: center;
     flex-direction: column;
     width: 55%;
-    background: rgba(255, 255, 255, 0.3);
+    background :#000000; 
+    /* background: rgba(255, 255, 255, 0.3); */
     /* backdrop-filter: blur(30px); */
     border-radius: 0 25% 20% 0;
     transition: border-radius .3s;
+    border: #feb729 3px solid;
 }
 
 .image-layer{
@@ -111,14 +114,15 @@ body{
 /* ====== Featured Words ===== */
 .feature-word{
     text-align: center;
-    color: antiquewhite;
+    
     width: 400px;
     
 }
 
 .feature-word span{
     font-weight: 600;
-    color: #212642;
+    /* color: #212642; */
+    color: rgb(255, 255, 255);
 }
 /* ====== Second Column ===== */
 .col-2{
@@ -126,6 +130,7 @@ body{
     width: 45%;
     padding: 20px;
     overflow: hidden;
+    
 }
 
 .btn-box{
@@ -142,14 +147,16 @@ body{
     border: none;
     border-radius: 30px;
     background: rgba(255, 255, 255, 0.2);
-    color: #fff;
+    color: #ffffff;
     box-shadow: 0 5px 10px rgba(74, 48, 48, 0.2);
     cursor: pointer;
     transition: .2s;
 }
 
 .btn-1{
-    background: #212642;
+    /* background: #212642; */
+    background : #feb729;
+    color: #000000;
 }
 .btn:hover{
     opacity: 0.85;
@@ -262,8 +269,8 @@ body{
     height: 55px;
     padding: 0 15px;
     margin: 10px 0;
-    color: #fff;
-    background: #212642;
+    color: #000000;
+    background: #feb729;
     border: none;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -288,5 +295,6 @@ body{
     }
     .col-2{
         width: 100%;
+        border: #feb729 2px solid ;
     }
 }
