@@ -228,7 +228,7 @@ li{
 }
 
 form{
-    padding-top: 20%;
+    padding-top: 15%;
     position:relative;
 }
 
@@ -314,7 +314,7 @@ form{
     .dropdown_menu {
         position: static;
         /* Change position for mobile */
-        display: none;
+        display: none; 
         /* Hide dropdown by default */
         width: 100%;
         /* Full width */
