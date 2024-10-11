@@ -339,5 +339,26 @@ router.post('/delete_archive',(req,res)=>{
     res.redirect('/Archive')
     }).catch(err=>console.log(err))
 })
-// 
+
+
+//loout
+router.get('/logout',(req,res)=>{
+     // ลบคุกกี้ 'cookieName'
+    //  console.log('Cookies before clearing:', req.cookies);
+
+     // ลบคุกกี้ 'loggedIn' และ 'username'
+     res.clearCookie('loggedIn')
+     res.clearCookie('username')
+     res.clearCookie('connect.sid')
+   
+     // Debug log คุกกี้หลังลบ
+    //  console.log('Cookies after clearing:', req.cookies);
+     req.session.destroy(err=>{
+        if (err) {
+            return res.status(500).send('Error occurred while clearing session');
+        }
+        res.redirect('/home')
+    })
+}) 
+
 module.exports = router
