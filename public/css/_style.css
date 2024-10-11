@@ -156,9 +156,14 @@ li{
     align-items: center;
     padding-top: 20px;
 }
-
+ #option_alert{
+        display: flex;
+        justify-content: center;
+        color: red;
+        display: none;
+    }
 /* Media Queries */
-@media (max-width: 1090px) {
+@media (max-width: 1165px) {
     #menu-icon {
         display: block;
     }
@@ -172,7 +177,7 @@ li{
         }
     }
 
-    
+   
 
     .nav-bar {
         position: fixed;

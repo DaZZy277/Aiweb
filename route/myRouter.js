@@ -13,6 +13,7 @@ const {archiveModel,loginRegisterModel} = require('../models/model')
 
 router.get(["/home","/"],(req,res) =>{
     res.render('mainpage',{username:req.cookies.username})
+
     // for(let cookieName in req.cookies){
     //     res.clearCookie(cookieName)
     // }
@@ -135,14 +136,6 @@ router.post('/result',(req,res)=>{
         }
         getPrediction(data.year_input, data.money_input); // เรียกใช้ฟังก์ชันเพื่อทำนายผล
         
-    }
-    else{
-        if(data.Percentage_input_Manual){
-            data.option = 'Manual';
-            console.log(1);
-        }else{
-            data.option = 'AiPredict';
-        }
     }
  
 })
