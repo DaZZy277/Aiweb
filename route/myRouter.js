@@ -113,7 +113,7 @@ router.post('/result',(req,res)=>{
         // console.log('hello im AI')
         async function getPrediction(n_years, initial_amount) {
             try {
-                const response = await axios.post('http://127.0.0.1:5000/predict',{
+                const response = await axios.post('https://model-api-1-q6bq.onrender.com/predict',{
                     n_years: n_years,
                     initial_amount: initial_amount
                 })
