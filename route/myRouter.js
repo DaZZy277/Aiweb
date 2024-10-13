@@ -3,7 +3,25 @@ const express = require('express')
 const router = express.Router()
 const axios = require('axios')
 
+// Ping API ทุกๆ 1 ชั่วโมงเพื่อป้องกันการเข้าสู่โหมด sleep
+setInterval(() => {
+    axios.get('https://model-api-1-q6bq.onrender.com/predict')
+        .then(doc => {
+            console.log('model-Api Keep-alive ping successful.');
+        })
+        .catch(error => {
+            console.error('Error in keep-alive ping:', error);
+        })
 
+    axios.get('https://moneymonkey.onrender.com/')
+        .then(doc => {
+            console.log(' Money Monkey-Api  Keep-alive ping successful.');
+        })
+        .catch(error => {
+            console.error('Error in keep-alive ping:', error);
+        })
+    
+}, 3600000); // 1 ชม. (3,600,000 milliseconds)
 
 //calling model
 const {archiveModel,loginRegisterModel} = require('../models/model')
