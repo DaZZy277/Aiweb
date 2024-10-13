@@ -17,7 +17,8 @@ body {
     min-height: 100vh;
     background-color: var(--bg-color);
     color: var(--text-color);
-    padding-top: 60px;
+    padding-top: 60px; /* Ensure this is the same height as your header */
+    overflow: visible; /* Remove overflow */ 
 }
 
 header {
@@ -363,3 +364,4 @@ form{
     font-family: 'IBM Plex Sans Thai', sans-serif;
     color: hsl(0, 0%, 30%);
 }
+

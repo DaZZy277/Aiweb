@@ -51,9 +51,10 @@
             <a href="home">Inflation Prediction</a>
           </div>
         </li>
-        <li><a href="team">Who we are</a></li>  
+        <li><a href="team">Who we are</a></li>
         <li><a href="member" class="active">Membership</a></li>
       </ul>
+
       <div class="main">
         <li class="dropdown">
           <% if (username) { %>
@@ -67,29 +68,30 @@
           <% } else { %>
           <a href="/login"> <i class="ri-user-fill"></i>
               Sign In | Register
-            </a> 
+            </a>
           <% } %>
         </li>
         <div class="bx bx-menu" id="menu-icon"></div>
+       
       </div>
       <div class="close-btn" id="close-icon">
         <i class="ri-close-fill"></i>
       </div>
     </header>
-
     <section style="font-family: IBM Plex Sans Thai; text-align: center; margin-top: 40px;">
-      <h1>Upgrade your plan</h1>
+      <h1>Subscription Plan</h1>
     </section>
      
       <div class="row p-3 ">
         <div class="col-md-6 left-side mb-3 ">
           <div class="card">
-            <h5 class="card-header">Free plan</h5>
+            <h5 class="card-header">Individual</h5>
             <div class="card-body">
-              <p class="card-text">-Limit saving archive.</p>
-              <p class="card-text">-Use our developed model.</p>
-              <p class="card-text">-Monthly update ai dataset.</p>
-              <p class="card-text">-Limit using predict function peday.</p>
+              <p class="card-text">-Limited 1 saving archive.</p>
+              <p class="card-text">-developed model.</p>
+              <p class="card-text">-Medium accuracy(80%).</p> 
+              <p class="card-text">-Limited 1 year prediction.</p>
+              <p class="card-text">-Limited update feature in the future</p>
               <h5 class="card-title">FREE</h5>
               <a href="#" class="btn btn-secondary ">your plan</a>
             </div>
@@ -97,13 +99,14 @@
         </div>
         <div class="col-md-6 left-side mb-3 ">
           <div class="card">
-            <h5 class="card-header">Subscription</h5>
+            <h5 class="card-header">Enterprise</h5>
             <div class="card-body">
               <p class="card-text">-Unlimited saving archive.</p>
-              <p class="card-text">-Access new ai before free plan.</p>
-              <p class="card-text">-Daily update ai dataset.</p>
-              <p class="card-text">-Unlimited using predict function.</p>
-              <h5 class="card-title">XX$ / year</h5>
+              <p class="card-text">-Finished model.</p>
+              <p class="card-text">-High accuracy(90%).</p>
+              <p class="card-text">-Allow 15 years prediction.</p> 
+              <p class="card-text">-All update feature in the future.</p>
+              <h5 class="card-title">up-coming / year</h5>
               <a href="#" class="btn btn-success">upgrade</a>
             </div>
           </div>
