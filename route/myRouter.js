@@ -35,7 +35,7 @@ const {archiveModel,loginRegisterModel} = require('../models/model')
 
 // const path = require('path')
 
-router.get(["/home","/"],(req,res) =>{
+router.get("/home",(req,res) =>{
     res.render('mainpage',{username:req.cookies.username})
 
     // for(let cookieName in req.cookies){
@@ -44,7 +44,7 @@ router.get(["/home","/"],(req,res) =>{
 })
 
 
-router.get("/index",(req,res) =>{
+router.get(["/index", "/"],(req,res) =>{
     res.render('index',{username:req.cookies.username})
     // console.log("555")
 }) 
