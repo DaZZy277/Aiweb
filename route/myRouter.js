@@ -5,6 +5,29 @@ const axios = require('axios')
 
 
 
+setInterval(() => {
+    axios.get('https://model-api-1-q6bq.onrender.com/predict')
+        .then(doc => {
+            console.log('model-Api Keep-alive ping successful.');
+        })
+        .catch(error => {
+            console.error('Error in keep-alive ping:', error);
+        })
+
+    axios.get('https://moneymonkey.onrender.com/')
+        .then(doc => {
+            console.log(' Money Monkey-Api  Keep-alive ping successful.');
+        })
+        .catch(error => {
+            console.error('Error in keep-alive ping:', error);
+        })
+    
+}, 3600000); // 1 ชม. (3,600,000 milliseconds)
+
+
+
+
+
 //calling model
 const {archiveModel,loginRegisterModel} = require('../models/model')
 // const { render } = require('ejs')
@@ -113,7 +136,7 @@ router.post('/result',(req,res)=>{
         // console.log('hello im AI')
         async function getPrediction(n_years, initial_amount) {
             try {
-                const response = await axios.post('http://127.0.0.1:5000/predict',{
+                const response = await axios.post('https://model-api-1-q6bq.onrender.com/predict',{
                     n_years: n_years,
                     initial_amount: initial_amount
                 })
@@ -121,9 +144,13 @@ router.post('/result',(req,res)=>{
                 // ดึงข้อมูลของปีสุดท้ายจาก response.data
                 const lastYearPrediction = response.data[response.data.length - 1]
 
+                //หา inflation_rate
+                const inflaty = lastYearPrediction.amount/req.body.money_input
+
                 // ส่งข้อมูลปีสุดท้ายไปยังไฟล์ EJS
                 res.render('prediction.ejs', { 
                     lastPrediction: lastYearPrediction,
+                    inflaty:inflaty,
                     inputMoney:req.body.money_input,
                     option:req.body.option
                 });
