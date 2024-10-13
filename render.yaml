@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: nodejs-app
+    env: node
+    buildCommand: "npm install"  # ติดตั้ง dependencies
+    startCommand: "npm start"    # รันแอป
+    region: "us"

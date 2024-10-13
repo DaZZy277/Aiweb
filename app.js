@@ -31,6 +31,9 @@ app.use(express.static(path.join(__dirname,'public')))
 
 app.use(favicon(__dirname + '/public/img/official_logo.png'));
 
-app.listen(8000,()=>{
+
+const port = process.env.port || 8000
+
+app.listen(port,()=>{
     console.log("Run Server at port 8000 ")
 })

@@ -17,7 +17,8 @@ body {
     min-height: 100vh;
     background-color: var(--bg-color);
     color: var(--text-color);
-    padding-top: 60px;
+    padding-top: 60px; /* Ensure this is the same height as your header */
+    overflow: visible; /* Remove overflow */ 
 }
 
 header {
@@ -156,9 +157,14 @@ li{
     align-items: center;
     padding-top: 20px;
 }
-
+ #option_alert{
+        display: flex;
+        justify-content: center;
+        color: red;
+        display: none;
+    }
 /* Media Queries */
-@media (max-width: 1090px) {
+@media (max-width: 1165px) {
     #menu-icon {
         display: block;
     }
@@ -172,7 +178,7 @@ li{
         }
     }
 
-    
+   
 
     .nav-bar {
         position: fixed;
@@ -336,7 +342,7 @@ form{
     padding: 20px;
     margin: 10px;
     text-align: center;
-    max-width: 250px;
+    width: 250px;
     display: inline-block;
 }
 
@@ -358,3 +364,4 @@ form{
     font-family: 'IBM Plex Sans Thai', sans-serif;
     color: hsl(0, 0%, 30%);
 }
+
