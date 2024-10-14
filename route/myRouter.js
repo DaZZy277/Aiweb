@@ -147,7 +147,7 @@ router.post('/result',(req,res)=>{
                 const lastYearPrediction = response.data[response.data.length - 1]
 
                 //หา inflation_rate
-                const inflaty = lastYearPrediction.amount/req.body.money_input
+                const inflaty = ((lastYearPrediction.amount/req.body.money_input)-1)*100
 
                 // ส่งข้อมูลปีสุดท้ายไปยังไฟล์ EJS
                 res.render('prediction.ejs', { 
