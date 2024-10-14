@@ -3,7 +3,7 @@ const express = require('express')
 const router = express.Router()
 const axios = require('axios')
 
-// Ping API ทุกๆ 1 ชั่วโมงเพื่อป้องกันการเข้าสู่โหมด sleep
+// Ping API ทุกๆ 15 นาทีเพื่อป้องกันการเข้าสู่โหมด sleep
 setInterval(() => {
     axios.get('https://model-api-1-q6bq.onrender.com/predict')
         .then(doc => {
@@ -21,7 +21,13 @@ setInterval(() => {
             console.error('Error in keep-alive ping:', error);
         })
     
-}, 3600000); // 1 ชม. (3,600,000 milliseconds)
+}, 900000); // 15 นาที (900000 milliseconds)
+
+
+
+
+
+
 
 //calling model
 const {archiveModel,loginRegisterModel} = require('../models/model')
@@ -29,7 +35,7 @@ const {archiveModel,loginRegisterModel} = require('../models/model')
 
 // const path = require('path')
 
-router.get(["/home","/"],(req,res) =>{
+router.get("/home",(req,res) =>{
     res.render('mainpage',{username:req.cookies.username})
 
     // for(let cookieName in req.cookies){
@@ -38,7 +44,7 @@ router.get(["/home","/"],(req,res) =>{
 })
 
 
-router.get("/index",(req,res) =>{
+router.get(["/index", "/"],(req,res) =>{
     res.render('index',{username:req.cookies.username})
     // console.log("555")
 }) 
@@ -140,9 +146,13 @@ router.post('/result',(req,res)=>{
                 // ดึงข้อมูลของปีสุดท้ายจาก response.data
                 const lastYearPrediction = response.data[response.data.length - 1]
 
+                //หา inflation_rate
+                const inflaty = lastYearPrediction.amount/req.body.money_input
+
                 // ส่งข้อมูลปีสุดท้ายไปยังไฟล์ EJS
                 res.render('prediction.ejs', { 
                     lastPrediction: lastYearPrediction,
+                    inflaty:inflaty,
                     inputMoney:req.body.money_input,
                     option:req.body.option
                 });
