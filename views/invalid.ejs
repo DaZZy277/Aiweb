@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
+    <title>MoneyMonkey</title>
     <!-- BOXICONS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- STYLE -->
     <link rel="stylesheet" href="css/style2.css">
 </head>
+
 <body>
     <!-- Form Container -->
     <div class="form-container">
@@ -25,61 +27,66 @@
                 <button class="btn btn-2" id="register">Sign up</button>
             </div>
             <% Object.values(invalid).forEach(function(item){ %>
-            <!-- Login Form Container -->
-            <div class="login-form">
-                <div class="form-title">
-                    <span>Sign In</span>
-                </div>
-                <form method="post" action="/checkLogin">
-                    <div class="form-inputs">
-                        <div class="input-box">
-                            <input type="text" id="wrong1" class="input-field" name="email" placeholder=" <%= item.email%>" required>
-                        </div>
-                        <div class="input-box">
-                            <input type="password" id="wrong2" class="input-field" name="password" placeholder="<%= item.password%>" required>
-                        </div>
-                        <div class="wrong_Text">
-                            <a id="wrong3">Wrong Email or Password</a>
-                        </div>
-                        <div class="input-box">
-                            <button type="submit" class="input-submit">
-                                <span>Sign In</span>
-                                <i class="bx bx-right-arrow-alt"></i>
-                            </button>
-                        </div>
+                <!-- Login Form Container -->
+                <div class="login-form">
+                    <div class="form-title">
+                        <span>Sign In</span>
                     </div>
-                </form>
-            </div>
-            <% }) %>
+                    <form method="post" action="/checkLogin">
+                        <div class="form-inputs">
+                            <div class="input-box">
+                                <input type="text" id="wrong1" class="input-field" name="email"
+                                    placeholder=" <%= item.email%>" required>
+                            </div>
+                            <div class="input-box">
+                                <input type="password" id="wrong2" class="input-field" name="password"
+                                    placeholder="<%= item.password%>" required>
+                            </div>
+                            <div class="wrong_Text">
+                                <a id="wrong3">Wrong Email or Password</a>
+                            </div>
+                            <div class="input-box">
+                                <button type="submit" class="input-submit">
+                                    <span>Sign In</span>
+                                    <i class="bx bx-right-arrow-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <% }) %>
 
-            <!-- Register Form Container -->
-            <div class="register-form">
-                <div class="form-title">
-                    <span>Create Account</span>
-                </div>
-                <form method="post" action="/checkRegister">
-                    <div class="form-inputs">
-                        <div class="input-box">
-                            <input type="text" class="input-field" name="email" placeholder="Email" required>
+                    <!-- Register Form Container -->
+                    <div class="register-form">
+                        <div class="form-title">
+                            <span>Create Account</span>
                         </div>
-                        <div class="input-box">
-                            <input type="text" class="input-field" name="username" placeholder="Username" required>
-                        </div>
-                        <div class="input-box">
-                            <input type="password" class="input-field" name="password" placeholder="Password" required>
-                        </div>
-                        <div class="input-box">
-                            <button type="submit" class="input-submit">
-                                <span>Sign Up</span>
-                                <i class="bx bx-right-arrow-alt"></i>
-                            </button>
-                        </div>
+                        <form method="post" action="/checkRegister">
+                            <div class="form-inputs">
+                                <div class="input-box">
+                                    <input type="text" class="input-field" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="input-box">
+                                    <input type="text" class="input-field" name="username" placeholder="Username"
+                                        required>
+                                </div>
+                                <div class="input-box">
+                                    <input type="password" class="input-field" name="password" placeholder="Password"
+                                        required>
+                                </div>
+                                <div class="input-box">
+                                    <button type="submit" class="input-submit">
+                                        <span>Sign Up</span>
+                                        <i class="bx bx-right-arrow-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </form>
-            </div>
-            
+
         </div>
     </div>
     <script src="js/index.js"></script>
 </body>
+
 </html>
